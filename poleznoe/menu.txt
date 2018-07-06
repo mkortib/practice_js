@@ -1,0 +1,28 @@
+var menu = document.getElementById('nav');
+;
+//for (var i = 0; i < menu.length; i++) {
+   menu.addEventListener('mouseover', function(event) {
+      var target = event.target;
+      if (target.className == 'menu-item') {
+         var sub = target.getElementsByClassName('sub_menu')
+//      for (var i = 0; i < sub.length; i++) {
+         closeMenu();
+         sub[0].style.display = 'block';
+//      }
+      }
+   })
+
+document.onmouseover = function(event) {
+   var target = event.target;
+   console.log(event.target);
+   if (target.className != 'menu-item' && target.className != 'sub_menu') {
+      closeMenu();
+   }
+}
+function closeMenu() {
+    var menu = document.getElementById('nav'); 
+   var sub = document.getElementsByClassName('sub_menu');
+   for (var i = 0; i < sub.length; i++) {
+      sub[i].style.display = 'none';
+   } 
+}

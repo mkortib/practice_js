@@ -1,0 +1,35 @@
+var tabs = document.getElementById('tabs');
+var tab = document.getElementsByClassName('tab');
+var content = document.getElementsByClassName('tab_content');
+
+window.onload = function() {
+   hideTabsContent(1);//по загрузке страницы, удаляем ненужные класы
+}
+function hideTabsContent(a) {
+   for (var i = a; i < content.length; i++) {
+      content[i].classList.remove('show');
+      content[i].classList.add('hide');
+      tab[i].classList.remove('whiteboard');
+   }
+}
+
+tabs.addEventListener('click', function(event) {// по клику запускаем нашу функцыю, которая будет считывать нажатия мыши по диву с ай ди табс 
+   var target = event.target; // присваеваем переменной таргет область нажатия мыши
+   if (target.className == 'tab') {// если таргет имеет класс таб 
+      for (var i = 0; i < tab.length; i++) {//запускаем цыкл который переьирает дивы с класом таб
+         if (target == tab[i]) { //если таргет равен елементу с цыкла
+            showTabsContent(i); // выводим этот див, добавляя класы
+         }
+      }
+    }
+})
+
+function showTabsContent(b) {
+   if (content[b].classList.contains('hide')){
+      hideTabsContent(0);
+      content[b].classList.add('show');
+      content[b].classList.remove('hide');
+      tab[b].classList.add('whiteboard');
+   }
+   
+}
